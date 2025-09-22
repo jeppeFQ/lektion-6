@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html#dagens-program",
+    "href": "index.html#dagens-program",
+    "title": "scraping og API-kald i Python",
+    "section": "Dagens program",
+    "text": "Dagens program\n\nAPI’er\n\nFælleskodning\n\nScrapers og crawlers\n\nHerunder kort om internettet og HTML\nrequests\nBeautifulSoup\nscrapy\nFælleskodning\n\nHvis tid, øvelser"
+  },
+  {
+    "objectID": "index.html#apier",
+    "href": "index.html#apier",
+    "title": "scraping og API-kald i Python",
+    "section": "API’er",
+    "text": "API’er"
+  },
+  {
+    "objectID": "index.html#web-scraping",
+    "href": "index.html#web-scraping",
+    "title": "scraping og API-kald i Python",
+    "section": "Web scraping",
+    "text": "Web scraping\n\n“Web scraping” er en paraplybetegnelse for (primært) automatiserede måder at indsamle information fra internettet (“the web”).\n\nTypisk er der tale om indsamling, som ikke er foregået manuelt via browser.\n\n“Crawling”, “scraping” og “spiders” er alle ord for scraping.\nAt arbejde med web scraping involverer både indsamling af rådata fra internettet og håndtering og konvertering af rådata til en håndterbar datastruktur."
+  },
+  {
+    "objectID": "index.html#kort-introduktion-til-internettet",
+    "href": "index.html#kort-introduktion-til-internettet",
+    "title": "scraping og API-kald i Python",
+    "section": "Kort introduktion til internettet",
+    "text": "Kort introduktion til internettet\n\nPå dansk bruges ordet “internettet” typisk til at dække over flere ting: både infrastrukturen, der skaber koblingen mellem maskinerne (“har du internet?”) samt indholdet på hjemmesider, som tilgås via browser (“jeg fandt det her på internettet”). På den måde kan man nemt glemme, at internettet består af mange komponenter."
+  },
+  {
+    "objectID": "index.html#legalitet-og-robots.txt",
+    "href": "index.html#legalitet-og-robots.txt",
+    "title": "scraping og API-kald i Python",
+    "section": "Legalitet og robots.txt",
+    "text": "Legalitet og robots.txt\nWeb scraping og copyright\n\nInformation og materials, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!\nMange hjemmesider har brugsbetingelser, der frabeder eller forbyder sig web scraping (da man nemt kan stjæle andres materiale på denne måde)\n\nWeb scraping og persondata\n\nData på sociale medier er en gevaldig gråzone ift. persondata\nSom udgangspunkt har man hjemmel til at behandle data, som personer har frivilligt har gjort offentligt tilgængeligt\nMEN: Hvornår kan noget siges at være “offentligt” på sociale medier, og er personen opmærksom på, at de har gjort det offentligt?\nOffentliggjort persondata er i øvrigt stadig persondata, så krav til opbevaring og oplysningspligt gælder i princippet stadig"
+  }
+]

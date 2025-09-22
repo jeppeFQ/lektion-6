@@ -1,0 +1,123 @@
+---
+title: "scraping og API-kald i Python"
+subtitle: ""
+author: "Jeppe Fjeldgaard Qvist"
+date: today
+format: 
+  revealjs:
+    include-after-body: "resources/timer.html"
+    navigation-mode: linear
+    slide-number: c
+    show-slide-number: print
+    embed-resources: true
+    self-contained-math: true
+    smaller: true
+    scrollable: true
+    theme: default
+    include-in-header: 
+      - text: |
+          <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+          <style>
+          .reveal {
+            font-family: "Libre Baskerville", serif !important;
+          }
+          .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+            font-family: "Libre Baskerville", serif !important;
+          }
+          .reveal .slides section {
+            overflow: visible !important;
+          }
+          .reveal ul, .reveal ol {
+            margin: 0.5em 0;
+            padding-left: 1.5em;
+            overflow: visible !important;
+          }
+          .reveal li {
+            margin-bottom: 0.25em;
+            overflow: visible !important;
+          }
+          </style>
+---
+
+## Dagens program
+
+* *API*'er
+  * Fælleskodning
+* *Scrapers* og *crawlers*
+  * Herunder kort om internettet og HTML 
+  * `requests`
+  * `BeautifulSoup`
+  * `scrapy`
+  * Fælleskodning
+* Hvis tid, *øvelser*
+
+## API'er 
+
+## Web scraping 
+
+::: {.incremental}
+* "Web scraping" er en paraplybetegnelse for (primært) automatiserede måder at indsamle information fra internettet ("the web"). 
+  * Typisk er der tale om indsamling, som ikke er foregået manuelt via browser.
+* "Crawling", "scraping" og "spiders" er alle ord for scraping.
+* *At arbejde med web scraping involverer både indsamling af rådata fra internettet og håndtering og konvertering af rådata til en håndterbar datastruktur.*
+:::
+
+## Kort introduktion til *internettet*
+
+> På dansk bruges ordet "internettet" typisk til at dække over flere ting: både infrastrukturen, der skaber koblingen mellem maskinerne ("har du internet?") samt indholdet på hjemmesider, som tilgås via browser ("jeg fandt det her på internettet"). På den måde kan man nemt glemme, at internettet består af mange komponenter.
+
+---
+
+> Internettet er ikke en forbindelse mellem én computer og én central server. Det er et netværk med mange forbindelser og afhængigheder. Det betyder dermed at der ingen fælles "telefonbog" er for internettet.
+
+https://www.historyofinformation.com/detail.php?id=4988
+
+## Legalitet og `robots.txt`
+
+### Web scraping og copyright
+
+* Information og materials, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!
+* Mange hjemmesider har brugsbetingelser, der frabeder eller forbyder sig web scraping (da man nemt kan stjæle andres materiale på denne måde)
+
+#### Web scraping og persondata
+
+* Data på sociale medier er en gevaldig gråzone ift. persondata
+* Som udgangspunkt har man hjemmel til at behandle data, som personer har frivilligt har gjort offentligt tilgængeligt
+* MEN: Hvornår kan noget siges at være "offentligt" på sociale medier, og er personen opmærksom på, at de har gjort det offentligt?
+* Offentliggjort persondata er i øvrigt stadig persondata, så krav til opbevaring og oplysningspligt gælder i princippet stadig
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
