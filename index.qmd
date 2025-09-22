@@ -1,5 +1,5 @@
 ---
-title: "scraping og API-kald i Python"
+title: "Scraping og API-kald i Python"
 subtitle: ""
 author: "Jeppe Fjeldgaard Qvist"
 date: today
@@ -41,17 +41,14 @@ format:
 
 ## Dagens program
 
-* *API*'er
-  * Fælleskodning
 * *Scrapers* og *crawlers*
   * Herunder kort om internettet og HTML 
   * `requests`
   * `BeautifulSoup`
   * `scrapy`
-  * Fælleskodning
+* *API*'er
+* Fælleskodning
 * Hvis tid, *øvelser*
-
-## API'er 
 
 ## Web scraping 
 
@@ -70,7 +67,8 @@ format:
 
 > Internettet er ikke en forbindelse mellem én computer og én central server. Det er et netværk med mange forbindelser og afhængigheder. Det betyder dermed at der ingen fælles "telefonbog" er for internettet.
 
-https://www.historyofinformation.com/detail.php?id=4988
+
+[https://www.historyofinformation.com/detail.php?id=4988](https://www.historyofinformation.com/detail.php?id=4988)
 
 ## Legalitet og `robots.txt`
 
@@ -127,6 +125,316 @@ User-agent: 008
 Disallow: /
 ```
 :::
+
+## Tilgå internettet med Python
+
+*To skridt er involveret i at samle data fra internettet:*
+
+1. *Send* (http) request (**GET** eller **POST**)
+
+2. *Behandl* indhold
+  * For scraping: Kildekode (**HTML**)
+  * For API'er: Afhænger af API (ofte i JSON format)
+
+Ved API'er bruger man længst tid på `1` (hvordan virker API'en, og hvordan formulerer jeg den rigtige forespørgsel?)
+
+Ved scraping bruger man længst tid på `2` (hvordan sorterer jeg i hjemmesidens kildekode?)
+
+## HTTP requests
+
+**Request**
+
+* Det, som vi afsender
+* **GET** requests: Typisk brugt for at anmode om information (API og browser)
+* **POST** requests: Typisk brugt for at tilføje noget
+  * (Grundet begrænsninger ved GET requests, bruges POST requests også nogen gange til at hente information fra API'er)
+
+
+**Response**
+
+  * Det, som returneres
+  * **Data** af en eller anden form---afhænger af modtagende server
+
+## Statuskoder
+
+*En HTTP request returnerer altid en statuskode.*
+
+* Statuskode der starter med 2 eller 3: Request successful
+  * E.g.: `200 = "OK"`
+* Statuskode der starter med 4: Request har fejlet ("client-side", fx 404).
+* Statuskode der starter med 5: Request har fejlet (server-side)
+
+## Requests med `requests`
+
+`requests` indeholder funktioner til at sende HTTP requests.      
+
+En browser sender en GET request, når den skal "hente" en hjemmeside:      
+
+```{python}
+#| echo: true
+#| eval: true
+#| include: true
+
+import requests
+
+r = requests.get("https://www.aau.dk")
+```
+
+`r` er nu en "response" class med forskellige attributter; fx .status_code:
+
+```{python}
+#| echo: true
+#| eval: true
+#| include: true
+
+r.status_code
+```
+
+--- 
+
+`.content` giver indholdet (her HTML kildekode):
+
+```{python}
+#| echo: true
+#| eval: true
+#| include: true
+
+r.content[0:1000]
+```
+
+## Introduktion til HTML
+
+* Når man arbejder med "rå" web scraping, er materialet man får tilbage i form af rå kildekode.
+* Det ville være meget besværligt at sortere i rå kildekode, som det ser ud.
+  * HTML har en struktur, som kan "udnyttes" til at filtrere unødvendig information fra.
+
+---
+
+*Rå html:*
+```{html}
+    <html>
+        <body>
+            <div id="convo1">
+                <p class="kenobi">Hello There!</p>
+            </div>
+            <div id="convo2">
+                <p class="grievous">General Kenobi!</p>
+            </div>
+            <div id="convo3">
+                <p class="kenobi">So Uncivilized!</p>
+            </div>
+        </body>
+    </html>
+```
+
+*"Rendered" html:*
+
+```{html}
+Hello There!
+
+General Kenobi!
+
+So Uncivilized!
+```
+
+---
+
+*HTML står for "Hyper-Text Markup Language". Det bruges til at strukturere indhold på hjemmesider.*
+
+* HTML er opbygget af "tags" angivet med <> og </>. Disse fortæller hvilken type indhold, der er tale om. <p> er for eksempel "paragraph" (tekstafnit).
+
+* Typiske tags: `h1` for overskrifter (og `h2`, `h3` osv.), `a` for links og `div` for "division" eller adskillelse.
+
+* HTML har en træ-lignende struktur. Tags befinder sig inde i andre tags.
+  * "Siblings"/"Søskende": Tags på samme niveau
+  * "Children"/"Børn": Tags under/inden i et andet tag
+  * "Parents"/"Forældre": Tags over/uden for et andet tag
+
+---
+
+*HTML bruger "attributes" til både at differentiere mellem den samme type tag og til at tilføje yderligere information til et tag*.
+
+* Opbyggeren af en hjemmeside kan selv navngive attributes, men visse standarder går igen:
+  * **id attribute**: Giver tags unikt id (ideelt set)
+  * **class attribute**: Differentierer typisk mellem forskellige tags af samme type - fx for at give forskellig styling/formatering
+  * **href attribute**: Indeholder URL som hyperlink refererer til (typisk en del af et a tag)
+
+
+## Øvelse i plenum
+
+> Uden at søge på tekstindholdet, hvordan kan vi så udlede teksten "General Kenobi" af nedenstående HTML-kode?
+
+```{html}
+    <html>
+        <body>
+            <div id="convo1">
+                <p class="kenobi">Hello There!</p>
+            </div>
+            <div id="convo2">
+                <p class="grievous">General Kenobi!</p>
+            </div>
+            <div id="convo3">
+                <p class="kenobi">So Uncivilized!</p>
+            </div>
+        </body>
+    </html>
+```
+
+## Håndtering af HTML med `BeautifulSoup`      
+
+*Pakken `BeautifulSoup` gør det nemmere at håndtere og navigere i HTML kode.*
+
+  * Pakkens funktioner er bygget op omkring et soup objekt.
+  * Pakken fungerer ved at konvertere kildekode/HTML fra en hjemmeside (en string) til et soup objekt.
+  * Man kan bruge HTML tags og attributes til at navigere i et soup objekt - blandt andet med metoderne .find() og .find_all()
+
+---
+
+```{python}
+#| echo: true
+#| eval: true
+#| include: true
+
+from bs4 import BeautifulSoup as bs
+
+soup = bs(r.content, "html.parser") # bruger indholdet fra aau.dk
+```
+
+---
+
+```{python}
+#| echo: true
+#| eval: true
+#| include: true
+
+soup.find('h1')
+```
+
+```{python}
+#| echo: true
+#| eval: true
+#| include: true
+
+soup.find('h1').get_text()
+```
+
+<br>
+
+Metoderne `.find()` og `.find_all()` bruges til at navigere i HTML.
+
+* `.find()`: *Returnerer første match som et nyt soup objekt*
+* `.find_all()`: *Returnerer alle matches som en liste af soup objekter*
+
+---
+
+`BeautifulSoup` understøtter at søge efter attributes. Attributes som id og class har sine egne argumenter:
+
+<br>
+
+```{python}
+#| echo: true
+#| eval: true
+#| include: true
+
+soup.find('div', class_ = 'classname')
+
+soup.find('div', id = 'idname')
+```
+
+# Fællesøvelse i UCloud! 
+
+## Crawling 
+
+*"Crawlers" eller "spiders" refererer typisk til programmer eller bots, der er bygget til at bevæge sig rundt på flere hjemmesider.*
+
+**En crawler består typisk af følgende:**
+
+* **Startbetingelser**: Hvor skal crawleren starte?
+* **Parsing funktioner**: Hvad skal crawleren gøre? (typisk en eller flere web scraping funktioner)
+* **Undtagelser**: Hvad skal crawleren undgå?
+* **Slutbetingelser**: Hvornår skal crawleren stoppe?
+
+Grundet internettets opbygning, kan crawlere, der går på tværs af hjemmeider, være meget vanskelige at sætte op.
+
+---
+
+**En crawler kan sættes op med basis Python kommandoer:**
+
+* Definere scraping-funktion (`def`)
+* Brug requests og BeautifulSoup til at skaffe og behandle hjemmesideindhold
+* Gentag scraping, så længe der er flere links (fx med et while loop)
+
+**En crawler kræver dog en del fejlhåndtering:**
+
+* Hvad skal der ske, hvis der ikke er flere links?
+* Hvad skal der ske, hvis request fejler?
+* Hvad skal der ske, hvis hjemmeside ikke indeholder det indhold, som scraper leder efter?
+* ... osv.
+
+**Derfor kan det ofte svare sig at bruge pakker til at bygge crawlers ud fra (fx scrapy).**
+
+## ADVARSEL! 
+
+*En crawler skal have forsinkelser indbygget mellem requests - ellers kan det betragtes som et angreb på server (robots.txt vil også nogen gange specificere et "crawl-delay")*
+
+En simpel måde at skabe forsinkelser er fx med `time.sleep()`. (Scrapere fra `scrapy` vil have forsinkelse indbygget.)
+
+<br> 
+
+```{python}
+#| echo: true
+#| eval: true
+#| include: true
+
+from datetime import datetime
+import time
+
+start = datetime.now()
+time.sleep(5)
+end = datetime.now()
+
+print(f"Jeg ventede i {(end-start).seconds} sekunder!")
+```
+
+
+# Fællesøvelse i UCloud! 
+
+## API-kald i Python
+
+**API:** *Application Programming Interface - henviser generelt til system-til-system "sprog" (ikke kun databaser).*
+
+API'er er forskellige men indeholder typisk de samme delkomponenter:
+
+* **Request**: Brug af API involverer at sende HTTP request (GET eller POST).
+* **Endpoint**: API'er består typisk af flere endpoints. Disse er blot URL'er.
+* **Parametre**: Parametre er de argumetnter, som endpointet accepterer. Via disse formuleres, hvad der efterspørges af API'en. 
+* **Autentificeirng**: Mange API'er kræver autentificering. Dette kan være HTTPS autentificering (brugernavn og kodeord) eller autentificering via tokens. Tokens er unikke nøgler, der identificerer, hvem eller hvad der laver request/henvendelse via API'en.
+
+---
+
+> Når vi scraper websites, sender vores Python-kode HTTP GET-forespørgsler til webservere og modtager HTML-sider tilbage. APIs fungerer på samme måde, men returnerer strukturerede data (ofte JSON) i stedet for HTML.
+
+
+# Fællesøvelse i UCloud! 
+
+## **ØVELSE:** API-kald med DAWA
+
+> Brug DAWA til at finde ud af, hvor mange kommuner der har en vej med navn "Østergade".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

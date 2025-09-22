@@ -2,36 +2,106 @@
   {
     "objectID": "index.html#dagens-program",
     "href": "index.html#dagens-program",
-    "title": "scraping og API-kald i Python",
+    "title": "Scraping og API-kald i Python",
     "section": "Dagens program",
-    "text": "Dagens program\n\nAPI’er\n\nFælleskodning\n\nScrapers og crawlers\n\nHerunder kort om internettet og HTML\nrequests\nBeautifulSoup\nscrapy\nFælleskodning\n\nHvis tid, øvelser"
-  },
-  {
-    "objectID": "index.html#apier",
-    "href": "index.html#apier",
-    "title": "scraping og API-kald i Python",
-    "section": "API’er",
-    "text": "API’er"
+    "text": "Dagens program\n\nScrapers og crawlers\n\nHerunder kort om internettet og HTML\nrequests\nBeautifulSoup\nscrapy\n\nAPI’er\nFælleskodning\nHvis tid, øvelser"
   },
   {
     "objectID": "index.html#web-scraping",
     "href": "index.html#web-scraping",
-    "title": "scraping og API-kald i Python",
+    "title": "Scraping og API-kald i Python",
     "section": "Web scraping",
     "text": "Web scraping\n\n“Web scraping” er en paraplybetegnelse for (primært) automatiserede måder at indsamle information fra internettet (“the web”).\n\nTypisk er der tale om indsamling, som ikke er foregået manuelt via browser.\n\n“Crawling”, “scraping” og “spiders” er alle ord for scraping.\nAt arbejde med web scraping involverer både indsamling af rådata fra internettet og håndtering og konvertering af rådata til en håndterbar datastruktur."
   },
   {
     "objectID": "index.html#kort-introduktion-til-internettet",
     "href": "index.html#kort-introduktion-til-internettet",
-    "title": "scraping og API-kald i Python",
+    "title": "Scraping og API-kald i Python",
     "section": "Kort introduktion til internettet",
     "text": "Kort introduktion til internettet\n\nPå dansk bruges ordet “internettet” typisk til at dække over flere ting: både infrastrukturen, der skaber koblingen mellem maskinerne (“har du internet?”) samt indholdet på hjemmesider, som tilgås via browser (“jeg fandt det her på internettet”). På den måde kan man nemt glemme, at internettet består af mange komponenter."
   },
   {
     "objectID": "index.html#legalitet-og-robots.txt",
     "href": "index.html#legalitet-og-robots.txt",
-    "title": "scraping og API-kald i Python",
+    "title": "Scraping og API-kald i Python",
     "section": "Legalitet og robots.txt",
     "text": "Legalitet og robots.txt\nWeb scraping og copyright\n\nInformation og materials, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!\nMange hjemmesider har brugsbetingelser, der frabeder eller forbyder sig web scraping (da man nemt kan stjæle andres materiale på denne måde)\n\nWeb scraping og persondata\n\nData på sociale medier er en gevaldig gråzone ift. persondata\nSom udgangspunkt har man hjemmel til at behandle data, som personer har frivilligt har gjort offentligt tilgængeligt\nMEN: Hvornår kan noget siges at være “offentligt” på sociale medier, og er personen opmærksom på, at de har gjort det offentligt?\nOffentliggjort persondata er i øvrigt stadig persondata, så krav til opbevaring og oplysningspligt gælder i princippet stadig"
+  },
+  {
+    "objectID": "index.html#tilgå-internettet-med-python",
+    "href": "index.html#tilgå-internettet-med-python",
+    "title": "Scraping og API-kald i Python",
+    "section": "Tilgå internettet med Python",
+    "text": "Tilgå internettet med Python\nTo skridt er involveret i at samle data fra internettet:\n\nSend (http) request (GET eller POST)\nBehandl indhold\n\n\nFor scraping: Kildekode (HTML)\nFor API’er: Afhænger af API (ofte i JSON format)\n\nVed API’er bruger man længst tid på 1 (hvordan virker API’en, og hvordan formulerer jeg den rigtige forespørgsel?)\nVed scraping bruger man længst tid på 2 (hvordan sorterer jeg i hjemmesidens kildekode?)"
+  },
+  {
+    "objectID": "index.html#http-requests",
+    "href": "index.html#http-requests",
+    "title": "Scraping og API-kald i Python",
+    "section": "HTTP requests",
+    "text": "HTTP requests\nRequest\n\nDet, som vi afsender\nGET requests: Typisk brugt for at anmode om information (API og browser)\nPOST requests: Typisk brugt for at tilføje noget\n\n(Grundet begrænsninger ved GET requests, bruges POST requests også nogen gange til at hente information fra API’er)\n\n\nResponse\n\nDet, som returneres\nData af en eller anden form—afhænger af modtagende server"
+  },
+  {
+    "objectID": "index.html#statuskoder",
+    "href": "index.html#statuskoder",
+    "title": "Scraping og API-kald i Python",
+    "section": "Statuskoder",
+    "text": "Statuskoder\nEn HTTP request returnerer altid en statuskode.\n\nStatuskode der starter med 2 eller 3: Request successful\n\nE.g.: 200 = \"OK\"\n\nStatuskode der starter med 4: Request har fejlet (“client-side”, fx 404).\nStatuskode der starter med 5: Request har fejlet (server-side)"
+  },
+  {
+    "objectID": "index.html#requests-med-requests",
+    "href": "index.html#requests-med-requests",
+    "title": "Scraping og API-kald i Python",
+    "section": "Requests med requests",
+    "text": "Requests med requests\nrequests indeholder funktioner til at sende HTTP requests.\nEn browser sender en GET request, når den skal “hente” en hjemmeside:\n\nimport requests\n\nr = requests.get(\"https://www.aau.dk\")\n\nr er nu en “response” class med forskellige attributter; fx .status_code:\n\nr.status_code\n\n200"
+  },
+  {
+    "objectID": "index.html#introduktion-til-html",
+    "href": "index.html#introduktion-til-html",
+    "title": "Scraping og API-kald i Python",
+    "section": "Introduktion til HTML",
+    "text": "Introduktion til HTML\n\nNår man arbejder med “rå” web scraping, er materialet man får tilbage i form af rå kildekode.\nDet ville være meget besværligt at sortere i rå kildekode, som det ser ud.\n\nHTML har en struktur, som kan “udnyttes” til at filtrere unødvendig information fra."
+  },
+  {
+    "objectID": "index.html#øvelse-i-plenum",
+    "href": "index.html#øvelse-i-plenum",
+    "title": "Scraping og API-kald i Python",
+    "section": "Øvelse i plenum",
+    "text": "Øvelse i plenum\n\nUden at søge på tekstindholdet, hvordan kan vi så udlede teksten “General Kenobi” af nedenstående HTML-kode?\n\n    &lt;html&gt;\n        &lt;body&gt;\n            &lt;div id=\"convo1\"&gt;\n                &lt;p class=\"kenobi\"&gt;Hello There!&lt;/p&gt;\n            &lt;/div&gt;\n            &lt;div id=\"convo2\"&gt;\n                &lt;p class=\"grievous\"&gt;General Kenobi!&lt;/p&gt;\n            &lt;/div&gt;\n            &lt;div id=\"convo3\"&gt;\n                &lt;p class=\"kenobi\"&gt;So Uncivilized!&lt;/p&gt;\n            &lt;/div&gt;\n        &lt;/body&gt;\n    &lt;/html&gt;"
+  },
+  {
+    "objectID": "index.html#håndtering-af-html-med-beautifulsoup",
+    "href": "index.html#håndtering-af-html-med-beautifulsoup",
+    "title": "Scraping og API-kald i Python",
+    "section": "Håndtering af HTML med BeautifulSoup",
+    "text": "Håndtering af HTML med BeautifulSoup\nPakken BeautifulSoup gør det nemmere at håndtere og navigere i HTML kode.\n\nPakkens funktioner er bygget op omkring et soup objekt.\nPakken fungerer ved at konvertere kildekode/HTML fra en hjemmeside (en string) til et soup objekt.\nMan kan bruge HTML tags og attributes til at navigere i et soup objekt - blandt andet med metoderne .find() og .find_all()"
+  },
+  {
+    "objectID": "index.html#crawling",
+    "href": "index.html#crawling",
+    "title": "Scraping og API-kald i Python",
+    "section": "Crawling",
+    "text": "Crawling\n“Crawlers” eller “spiders” refererer typisk til programmer eller bots, der er bygget til at bevæge sig rundt på flere hjemmesider.\nEn crawler består typisk af følgende:\n\nStartbetingelser: Hvor skal crawleren starte?\nParsing funktioner: Hvad skal crawleren gøre? (typisk en eller flere web scraping funktioner)\nUndtagelser: Hvad skal crawleren undgå?\nSlutbetingelser: Hvornår skal crawleren stoppe?\n\nGrundet internettets opbygning, kan crawlere, der går på tværs af hjemmeider, være meget vanskelige at sætte op."
+  },
+  {
+    "objectID": "index.html#advarsel",
+    "href": "index.html#advarsel",
+    "title": "Scraping og API-kald i Python",
+    "section": "ADVARSEL!",
+    "text": "ADVARSEL!\nEn crawler skal have forsinkelser indbygget mellem requests - ellers kan det betragtes som et angreb på server (robots.txt vil også nogen gange specificere et “crawl-delay”)\nEn simpel måde at skabe forsinkelser er fx med time.sleep(). (Scrapere fra scrapy vil have forsinkelse indbygget.)\n\n\nfrom datetime import datetime\nimport time\n\nstart = datetime.now()\ntime.sleep(5)\nend = datetime.now()\n\nprint(f\"Jeg ventede i {(end-start).seconds} sekunder!\")\n\nJeg ventede i 5 sekunder!"
+  },
+  {
+    "objectID": "index.html#api-kald-i-python",
+    "href": "index.html#api-kald-i-python",
+    "title": "Scraping og API-kald i Python",
+    "section": "API-kald i Python",
+    "text": "API-kald i Python\nAPI: Application Programming Interface - henviser generelt til system-til-system “sprog” (ikke kun databaser).\nAPI’er er forskellige men indeholder typisk de samme delkomponenter:\n\nRequest: Brug af API involverer at sende HTTP request (GET eller POST).\nEndpoint: API’er består typisk af flere endpoints. Disse er blot URL’er.\nParametre: Parametre er de argumetnter, som endpointet accepterer. Via disse formuleres, hvad der efterspørges af API’en.\nAutentificeirng: Mange API’er kræver autentificering. Dette kan være HTTPS autentificering (brugernavn og kodeord) eller autentificering via tokens. Tokens er unikke nøgler, der identificerer, hvem eller hvad der laver request/henvendelse via API’en."
+  },
+  {
+    "objectID": "index.html#øvelse-api-kald-med-dawa",
+    "href": "index.html#øvelse-api-kald-med-dawa",
+    "title": "Scraping og API-kald i Python",
+    "section": "ØVELSE: API-kald med DAWA",
+    "text": "ØVELSE: API-kald med DAWA\n\nBrug DAWA til at finde ud af, hvor mange kommuner der har en vej med navn “Østergade”."
   }
 ]
