@@ -25,7 +25,7 @@
     "href": "index.html#legalitet-og-robots.txt",
     "title": "Scraping og API-kald i Python",
     "section": "Legalitet og robots.txt",
-    "text": "Legalitet og robots.txt\nWeb scraping og copyright\n\nInformation og materials, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!\nMange hjemmesider har brugsbetingelser, der frabeder eller forbyder sig web scraping (da man nemt kan stjæle andres materiale på denne måde)\n\nWeb scraping og persondata\n\nData på sociale medier er en gevaldig gråzone ift. persondata\nSom udgangspunkt har man hjemmel til at behandle data, som personer har frivilligt har gjort offentligt tilgængeligt\nMEN: Hvornår kan noget siges at være “offentligt” på sociale medier, og er personen opmærksom på, at de har gjort det offentligt?\nOffentliggjort persondata er i øvrigt stadig persondata, så krav til opbevaring og oplysningspligt gælder i princippet stadig"
+    "text": "Legalitet og robots.txt\nCopyright\n\nInformation og materiale, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!\nMange hjemmesider har brugsbetingelser, der frabeder eller forbyder sig web scraping (da man nemt kan stjæle andres materiale på denne måde)\n\nPersondata\n\nData på sociale medier er en gevaldig gråzone ift. persondata\nSom udgangspunkt har man hjemmel til at behandle data, som personer har frivilligt har gjort offentligt tilgængeligt\nMEN: Hvornår kan noget siges at være “offentligt” på sociale medier, og er personen opmærksom på, at de har gjort det offentligt?\nOffentliggjort persondata er i øvrigt stadig persondata, så krav til opbevaring og oplysningspligt gælder i princippet stadig"
   },
   {
     "objectID": "index.html#tilgå-internettet-med-python",
@@ -74,7 +74,7 @@
     "href": "index.html#håndtering-af-html-med-beautifulsoup",
     "title": "Scraping og API-kald i Python",
     "section": "Håndtering af HTML med BeautifulSoup",
-    "text": "Håndtering af HTML med BeautifulSoup\nPakken BeautifulSoup gør det nemmere at håndtere og navigere i HTML kode.\n\nPakkens funktioner er bygget op omkring et soup objekt.\nPakken fungerer ved at konvertere kildekode/HTML fra en hjemmeside (en string) til et soup objekt.\nMan kan bruge HTML tags og attributes til at navigere i et soup objekt - blandt andet med metoderne .find() og .find_all()"
+    "text": "Håndtering af HTML med BeautifulSoup\nPakken BeautifulSoup gør det nemmere at håndtere og navigere i HTML kode.\n\nPakkens funktioner er bygget op omkring et soup objekt.\nPakken fungerer ved at konvertere kildekode/HTML fra en hjemmeside (en string) til et soup objekt.\nMan kan bruge HTML tags og attributes til at navigere i et soup objekt—blandt andet med metoderne .find() og .find_all()"
   },
   {
     "objectID": "index.html#crawling",

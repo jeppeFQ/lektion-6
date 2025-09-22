@@ -1149,12 +1149,12 @@ Jeppe Fjeldgaard Qvist
 </section>
 <section id="legalitet-og-robots.txt" class="slide level2">
 <h2>Legalitet og <code>robots.txt</code></h2>
-<h3 id="web-scraping-og-copyright">Web scraping og copyright</h3>
+<h4 id="copyright">Copyright</h4>
 <ul>
-<li>Information og materials, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!</li>
+<li>Information og materiale, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!</li>
 <li>Mange hjemmesider har brugsbetingelser, der frabeder eller forbyder sig web scraping (da man nemt kan stjæle andres materiale på denne måde)</li>
 </ul>
-<h4 id="web-scraping-og-persondata">Web scraping og persondata</h4>
+<h4 id="persondata">Persondata</h4>
 <ul>
 <li>Data på sociale medier er en gevaldig gråzone ift. persondata</li>
 <li>Som udgangspunkt har man hjemmel til at behandle data, som personer har frivilligt har gjort offentligt tilgængeligt</li>
@@ -1164,7 +1164,7 @@ Jeppe Fjeldgaard Qvist
 </section>
 <section class="slide level2">
 
-<h4 id="web-scraping-og-hacking">Web scraping og “hacking”</h4>
+<h4 id="hacking">“Hacking”</h4>
 <ul>
 <li>Indholdet fra en hjemmeside befinder sig altid på en server, som er ejet af nogen.</li>
 <li>Hver gang man besøger en hjemmeside, sender man en henvendelse, som skal bearbejdes af serveren</li>
@@ -1178,7 +1178,7 @@ Jeppe Fjeldgaard Qvist
 <h4 id="robots.txt"><code>robots.txt</code></h4>
 <p><em><code>robots.txt</code> er en gammel konvention til at sætte betingelser for, hvad en bot (altså en scraper) må på hjemmesiden.</em></p>
 <ul>
-<li class="fragment"><p>Det er ikke et juridisk dokument, så man kan ikke retsforfølges på nogen måde for ikke at følge robots.txt, men typisk hænger robots.txt sammen med brugsbetingelserne (som man i nogen tilfælde kan retsforfølges på baggrund af).</p>
+<li class="fragment"><p>Det er ikke et juridisk dokument, så man kan ikke retsforfølges for ikke at følge robots.txt, men typisk hænger robots.txt sammen med brugsbetingelserne (som man i nogen tilfælde kan retsforfølges på baggrund af).</p>
 <ul>
 <li class="fragment"><code>&quot;User-agent&quot;</code>: Hvem gælder betingelserne for? (typisk navnet på en bestemt bot, en type browser eller andet)
 <ul>
@@ -1202,10 +1202,7 @@ Jeppe Fjeldgaard Qvist
 <pre><code>User-agent: *
 Disallow: /lyricsdb/
 Disallow: /song/
-Allow: /
-
-User-agent: 008
-Disallow: /</code></pre>
+Allow: /</code></pre>
 </div>
 </section>
 <section id="tilgå-internettet-med-python" class="slide level2 scrollable">
@@ -1255,15 +1252,15 @@ Disallow: /</code></pre>
 <h2>Requests med <code>requests</code></h2>
 <p><code>requests</code> indeholder funktioner til at sende HTTP requests.</p>
 <p>En browser sender en GET request, når den skal “hente” en hjemmeside:</p>
-<div id="3303b78e" class="cell" data-execution_count="1">
+<div id="3a81f877" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> requests</span>
 <span id="cb2-2"><a></a></span>
 <span id="cb2-3"><a></a>r <span class="op">=</span> requests.get(<span class="st">&quot;https://www.aau.dk&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>r</code> er nu en “response” class med forskellige attributter; fx .status_code:</p>
-<div id="d3f5a413" class="cell" data-execution_count="2">
+<div id="a4513eff" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>r.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="90">
 <pre><code>200</code></pre>
 </div>
 </div>
@@ -1271,9 +1268,9 @@ Disallow: /</code></pre>
 <section class="slide level2">
 
 <p><code>.content</code> giver indholdet (her HTML kildekode):</p>
-<div id="4ee70009" class="cell" data-execution_count="3">
+<div id="8839b2f7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>r.content[<span class="dv">0</span>:<span class="dv">1000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>b&#39;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charSet=&quot;utf-8&quot;/&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;/&gt;&lt;title&gt;AAU - Viden for verden - Aalborg Universitet&lt;/title&gt;&lt;meta name=&quot;description&quot; content=&quot;Aalborg Universitet - Problem- og projektbaseret forskning og uddannelse, der i samspil mellem AAU og omverdenen skaber viden, der forandrer verden.&quot;/&gt;&lt;meta name=&quot;robots&quot; content=&quot;follow, index&quot;/&gt;&lt;link rel=&quot;canonical&quot; href=&quot;https://www.aau.dk/&quot;/&gt;&lt;meta property=&quot;og:url&quot; content=&quot;https://www.aau.dk/&quot;/&gt;&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;/&gt;&lt;meta property=&quot;og:title&quot; content=&quot;AAU - Viden for verden&quot;/&gt;&lt;meta property=&quot;og:description&quot; content=&quot;Aalborg Universitet - Problem- og projektbaseret forskning og uddannelse, der i samspil mellem AAU og omverdenen skaber viden, der forandrer verden.&quot;/&gt;&lt;meta property=&quot;og:site_name&quot; content=&quot;Aalborg Universitet&quot;/&gt;&lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot;/&gt;&lt;meta name=&quot;twitter:domain&quot; content=&quot;www.aau.dk&quot;/&gt;&lt;meta name=&quot;twitter:url&quot; content=&quot;https://www.aau.dk&#39;</code></pre>
 </div>
 </div>
@@ -1315,9 +1312,7 @@ Disallow: /</code></pre>
 
 <p><em>HTML står for “Hyper-Text Markup Language”. Det bruges til at strukturere indhold på hjemmesider.</em></p>
 <ul>
-<li><p>HTML er opbygget af “tags” angivet med &lt;&gt; og &lt;/&gt;. Disse fortæller hvilken type indhold, der er tale om.</p>
-<p>
-</p><p>er for eksempel “paragraph” (tekstafnit).</p></li>
+<li><p>HTML er opbygget af “tags” angivet med &lt;&gt; og &lt;/&gt;. Disse fortæller hvilken type indhold, der er tale om. <code>&lt;p&gt;</code> er for eksempel “paragraph” (tekstafnit).</p></li>
 <li><p>Typiske tags: <code>h1</code> for overskrifter (og <code>h2</code>, <code>h3</code> osv.), <code>a</code> for links og <code>div</code> for “division” eller adskillelse.</p></li>
 <li><p>HTML har en træ-lignende struktur. Tags befinder sig inde i andre tags.</p>
 <ul>
@@ -1362,30 +1357,28 @@ Disallow: /</code></pre>
 <h2>Håndtering af HTML med <code>BeautifulSoup</code></h2>
 <p><em>Pakken <code>BeautifulSoup</code> gør det nemmere at håndtere og navigere i HTML kode.</em></p>
 <ul>
-<li>Pakkens funktioner er bygget op omkring et soup objekt.</li>
-<li>Pakken fungerer ved at konvertere kildekode/HTML fra en hjemmeside (en string) til et soup objekt.</li>
-<li>Man kan bruge HTML tags og attributes til at navigere i et soup objekt - blandt andet med metoderne .find() og .find_all()</li>
+<li>Pakkens funktioner er bygget op omkring et <code>soup objekt</code>.</li>
+<li>Pakken fungerer ved at konvertere kildekode/HTML fra en hjemmeside (en string) til et <code>soup objekt</code>.</li>
+<li>Man kan bruge HTML tags og attributes til at navigere i et <code>soup objekt</code>—blandt andet med metoderne <code>.find()</code> og <code>.find_all()</code></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<div id="03fe2cbc" class="cell" data-execution_count="4">
+<div id="ca4f81cb" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup <span class="im">as</span> bs</span>
 <span id="cb10-2"><a></a></span>
 <span id="cb10-3"><a></a>soup <span class="op">=</span> bs(r.content, <span class="st">&quot;html.parser&quot;</span>) <span class="co"># bruger indholdet fra aau.dk</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section class="slide level2">
-
-<div id="ee7d477c" class="cell" data-execution_count="5">
+<p><br></p>
+<div id="384374a1" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>soup.find(<span class="st">&#39;h1&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="93">
 <pre><code>&lt;h1 class=&quot;Heading_Heading__7szv_ Heading_Heading___display__Dyc4L HeroVideo_HeroVideo_heading__oYvGs HeroVideo_HeroVideo_heading___small__NhzGS HeroVideo_HeroVideo_heading___noOverlap__kDJox&quot;&gt;&lt;span class=&quot;HeroVideo_HeroVideo_headingLine__32P_a&quot;&gt;Bliv&lt;/span&gt;&lt;span class=&quot;HeroVideo_HeroVideo_headingLine__32P_a&quot;&gt;studerende&lt;/span&gt;&lt;/h1&gt;</code></pre>
 </div>
 </div>
-<div id="a8ec6b52" class="cell" data-execution_count="6">
+<div id="a35c43c8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>soup.find(<span class="st">&#39;h1&#39;</span>).get_text()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="94">
 <pre><code>&#39;Blivstuderende&#39;</code></pre>
 </div>
 </div>
@@ -1400,7 +1393,7 @@ Disallow: /</code></pre>
 
 <p><code>BeautifulSoup</code> understøtter at søge efter attributes. Attributes som id og class har sine egne argumenter:</p>
 <p><br></p>
-<div id="613ce3f6" class="cell" data-execution_count="7">
+<div id="f91d6642" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>soup.find(<span class="st">&#39;div&#39;</span>, class_ <span class="op">=</span> <span class="st">&#39;classname&#39;</span>)</span>
 <span id="cb15-2"><a></a></span>
 <span id="cb15-3"><a></a>soup.find(<span class="st">&#39;div&#39;</span>, <span class="bu">id</span> <span class="op">=</span> <span class="st">&#39;idname&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1428,7 +1421,7 @@ Disallow: /</code></pre>
 <p><strong>En crawler kan sættes op med basis Python kommandoer:</strong></p>
 <ul>
 <li>Definere scraping-funktion (<code>def</code>)</li>
-<li>Brug requests og BeautifulSoup til at skaffe og behandle hjemmesideindhold</li>
+<li>Brug requests og <code>BeautifulSoup</code> til at skaffe og behandle hjemmesideindhold</li>
 <li>Gentag scraping, så længe der er flere links (fx med et while loop)</li>
 </ul>
 <p><strong>En crawler kræver dog en del fejlhåndtering:</strong></p>
@@ -1445,7 +1438,7 @@ Disallow: /</code></pre>
 <p><em>En crawler skal have forsinkelser indbygget mellem requests - ellers kan det betragtes som et angreb på server (robots.txt vil også nogen gange specificere et “crawl-delay”)</em></p>
 <p>En simpel måde at skabe forsinkelser er fx med <code>time.sleep()</code>. (Scrapere fra <code>scrapy</code> vil have forsinkelse indbygget.)</p>
 <p><br></p>
-<div id="716c44c3" class="cell" data-execution_count="8">
+<div id="33356353" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb16-2"><a></a><span class="im">import</span> time</span>
 <span id="cb16-3"><a></a></span>
@@ -1481,19 +1474,11 @@ Disallow: /</code></pre>
 <p>Når vi scraper websites, sender vores Python-kode HTTP GET-forespørgsler til webservere og modtager HTML-sider tilbage. APIs fungerer på samme måde, men returnerer strukturerede data (ofte JSON) i stedet for HTML.</p>
 </blockquote>
 </section></section>
-<section>
 <section id="fællesøvelse-i-ucloud-2" class="title-slide slide level1 center">
 <h1>Fællesøvelse i UCloud!</h1>
 
+
 </section>
-<section id="øvelse-api-kald-med-dawa" class="slide level2">
-<h2><strong>ØVELSE:</strong> API-kald med DAWA</h2>
-<blockquote>
-<p>Brug DAWA til at finde ud af, hvor mange kommuner der har en vej med navn “Østergade”.</p>
-</blockquote>
-
-
-</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

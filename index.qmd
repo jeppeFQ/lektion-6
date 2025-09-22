@@ -72,12 +72,12 @@ format:
 
 ## Legalitet og `robots.txt`
 
-### Web scraping og copyright
+#### Copyright
 
-* Information og materials, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!
+* Information og materiale, som virksomheder, organisationer, privatpersoner mm. lægger på offentligt tilgængelige hjemmesider er stadig ejet af disse entiteter!
 * Mange hjemmesider har brugsbetingelser, der frabeder eller forbyder sig web scraping (da man nemt kan stjæle andres materiale på denne måde)
 
-#### Web scraping og persondata
+#### Persondata
 
 * Data på sociale medier er en gevaldig gråzone ift. persondata
 * Som udgangspunkt har man hjemmel til at behandle data, som personer har frivilligt har gjort offentligt tilgængeligt
@@ -86,7 +86,7 @@ format:
 
 ---
 
-#### Web scraping og "hacking"
+#### "Hacking"
 
 * Indholdet fra en hjemmeside befinder sig altid på en server, som er ejet af nogen.
 * Hver gang man besøger en hjemmeside, sender man en henvendelse, som skal bearbejdes af serveren
@@ -102,7 +102,7 @@ format:
 ::: {.incremental}
 *`robots.txt` er en gammel konvention til at sætte betingelser for, hvad en bot (altså en scraper) må på hjemmesiden.*      
 
-* Det er ikke et juridisk dokument, så man kan ikke retsforfølges på nogen måde for ikke at følge robots.txt, men typisk hænger robots.txt sammen med brugsbetingelserne (som man i nogen tilfælde kan retsforfølges på baggrund af).       
+* Det er ikke et juridisk dokument, så man kan ikke retsforfølges for ikke at følge robots.txt, men typisk hænger robots.txt sammen med brugsbetingelserne (som man i nogen tilfælde kan retsforfølges på baggrund af).       
 
   * `"User-agent"`: Hvem gælder betingelserne for? (typisk navnet på en bestemt bot, en type browser eller andet)      
     * `"*"` betyder alle     
@@ -120,9 +120,6 @@ User-agent: *
 Disallow: /lyricsdb/
 Disallow: /song/
 Allow: /
-
-User-agent: 008
-Disallow: /
 ```
 :::
 
@@ -241,7 +238,7 @@ So Uncivilized!
 
 *HTML står for "Hyper-Text Markup Language". Det bruges til at strukturere indhold på hjemmesider.*
 
-* HTML er opbygget af "tags" angivet med <> og </>. Disse fortæller hvilken type indhold, der er tale om. <p> er for eksempel "paragraph" (tekstafnit).
+* HTML er opbygget af "tags" angivet med <> og </>. Disse fortæller hvilken type indhold, der er tale om. `<p>` er for eksempel "paragraph" (tekstafnit).
 
 * Typiske tags: `h1` for overskrifter (og `h2`, `h3` osv.), `a` for links og `div` for "division" eller adskillelse.
 
@@ -284,9 +281,9 @@ So Uncivilized!
 
 *Pakken `BeautifulSoup` gør det nemmere at håndtere og navigere i HTML kode.*
 
-  * Pakkens funktioner er bygget op omkring et soup objekt.
-  * Pakken fungerer ved at konvertere kildekode/HTML fra en hjemmeside (en string) til et soup objekt.
-  * Man kan bruge HTML tags og attributes til at navigere i et soup objekt - blandt andet med metoderne .find() og .find_all()
+  * Pakkens funktioner er bygget op omkring et `soup objekt`.
+  * Pakken fungerer ved at konvertere kildekode/HTML fra en hjemmeside (en string) til et `soup objekt`.
+  * Man kan bruge HTML tags og attributes til at navigere i et `soup objekt`---blandt andet med metoderne `.find()` og `.find_all()`
 
 ---
 
@@ -300,7 +297,7 @@ from bs4 import BeautifulSoup as bs
 soup = bs(r.content, "html.parser") # bruger indholdet fra aau.dk
 ```
 
----
+<br> 
 
 ```{python}
 #| echo: true
@@ -361,7 +358,7 @@ Grundet internettets opbygning, kan crawlere, der går på tværs af hjemmeider,
 **En crawler kan sættes op med basis Python kommandoer:**
 
 * Definere scraping-funktion (`def`)
-* Brug requests og BeautifulSoup til at skaffe og behandle hjemmesideindhold
+* Brug requests og `BeautifulSoup` til at skaffe og behandle hjemmesideindhold
 * Gentag scraping, så længe der er flere links (fx med et while loop)
 
 **En crawler kræver dog en del fejlhåndtering:**
@@ -416,12 +413,6 @@ API'er er forskellige men indeholder typisk de samme delkomponenter:
 
 
 # Fællesøvelse i UCloud! 
-
-## **ØVELSE:** API-kald med DAWA
-
-> Brug DAWA til at finde ud af, hvor mange kommuner der har en vej med navn "Østergade".
-
-
 
 
 
