@@ -1101,6 +1101,52 @@ Jeppe Fjeldgaard Qvist
 <li>MEN: Hvornår kan noget siges at være “offentligt” på sociale medier, og er personen opmærksom på, at de har gjort det offentligt?</li>
 <li>Offentliggjort persondata er i øvrigt stadig persondata, så krav til opbevaring og oplysningspligt gælder i princippet stadig</li>
 </ul>
+</section>
+<section class="slide level2">
+
+<h4 id="web-scraping-og-hacking">Web scraping og “hacking”</h4>
+<ul>
+<li>Indholdet fra en hjemmeside befinder sig altid på en server, som er ejet af nogen.</li>
+<li>Hver gang man besøger en hjemmeside, sender man en henvendelse, som skal bearbejdes af serveren</li>
+<li>Jo flere henvendelser, jo mere belastet bliver serveren (tænk på når der er årsopgørelse)</li>
+<li>Python gør det nemt for os at skrive kommandoer, som sender ufatteligt mange henvendelser på meget kort tid.</li>
+</ul>
+<p><strong>Dette kan betragtes som et angreb og et forsøg på at overbelaste serveren, hvilket er ulovligt!!</strong></p>
+</section>
+<section class="slide level2">
+
+<h4 id="robots.txt"><code>robots.txt</code></h4>
+<p><em><code>robots.txt</code> er en gammel konvention til at sætte betingelser for, hvad en bot (altså en scraper) må på hjemmesiden.</em></p>
+<ul>
+<li class="fragment"><p>Det er ikke et juridisk dokument, så man kan ikke retsforfølges på nogen måde for ikke at følge robots.txt, men typisk hænger robots.txt sammen med brugsbetingelserne (som man i nogen tilfælde kan retsforfølges på baggrund af).</p>
+<ul>
+<li class="fragment"><code>&quot;User-agent&quot;</code>: Hvem gælder betingelserne for? (typisk navnet på en bestemt bot, en type browser eller andet)
+<ul>
+<li class="fragment"><code>&quot;*&quot;</code> betyder alle<br>
+</li>
+</ul></li>
+<li class="fragment"><code>&quot;Disallow&quot;</code>: Hvilke dele af hjemmesiden, må bots ikke tilgå?<br>
+</li>
+<li class="fragment"><code>&quot;/&quot;</code> betyder hele hjemmesiden<br>
+</li>
+<li class="fragment"><code>&quot;Disallow&quot;</code> vægter højere end <code>&quot;Allow&quot;</code><br>
+</li>
+<li class="fragment"><code>&quot;Allow&quot;</code>: Hvilke dele af hjemmesiden, må bots gerne tilgå? (hvis ikke angivet, er alt ikke listet under “Disallow” tilladt)<br>
+</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div style="font-size: 1.7em;">
+<pre><code>User-agent: *
+Disallow: /lyricsdb/
+Disallow: /song/
+Allow: /
+
+User-agent: 008
+Disallow: /</code></pre>
+</div>
 
 
 </section>

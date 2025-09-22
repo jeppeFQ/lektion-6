@@ -86,13 +86,47 @@ https://www.historyofinformation.com/detail.php?id=4988
 * MEN: Hvornår kan noget siges at være "offentligt" på sociale medier, og er personen opmærksom på, at de har gjort det offentligt?
 * Offentliggjort persondata er i øvrigt stadig persondata, så krav til opbevaring og oplysningspligt gælder i princippet stadig
 
+---
 
+#### Web scraping og "hacking"
 
+* Indholdet fra en hjemmeside befinder sig altid på en server, som er ejet af nogen.
+* Hver gang man besøger en hjemmeside, sender man en henvendelse, som skal bearbejdes af serveren
+* Jo flere henvendelser, jo mere belastet bliver serveren (tænk på når der er årsopgørelse)
+* Python gør det nemt for os at skrive kommandoer, som sender ufatteligt mange henvendelser på meget kort tid.
 
+**Dette kan betragtes som et angreb og et forsøg på at overbelaste serveren, hvilket er ulovligt!!**
 
+---
 
+#### `robots.txt`
 
+::: {.incremental}
+*`robots.txt` er en gammel konvention til at sætte betingelser for, hvad en bot (altså en scraper) må på hjemmesiden.*      
 
+* Det er ikke et juridisk dokument, så man kan ikke retsforfølges på nogen måde for ikke at følge robots.txt, men typisk hænger robots.txt sammen med brugsbetingelserne (som man i nogen tilfælde kan retsforfølges på baggrund af).       
+
+  * `"User-agent"`: Hvem gælder betingelserne for? (typisk navnet på en bestemt bot, en type browser eller andet)      
+    * `"*"` betyder alle     
+  * `"Disallow"`: Hvilke dele af hjemmesiden, må bots ikke tilgå?     
+  * `"/"` betyder hele hjemmesiden     
+  * `"Disallow"` vægter højere end `"Allow"`     
+  * `"Allow"`: Hvilke dele af hjemmesiden, må bots gerne tilgå? (hvis ikke angivet, er alt ikke listet under "Disallow" tilladt)     
+:::
+
+---
+
+::: {style="font-size: 1.7em;"}
+```
+User-agent: *
+Disallow: /lyricsdb/
+Disallow: /song/
+Allow: /
+
+User-agent: 008
+Disallow: /
+```
+:::
 
 
 
